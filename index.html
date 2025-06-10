@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+  <header class="bg-gray-800 py-6 shadow-md">
+    <h1 class="text-2xl md:text-3xl font-bold text-center">
+      Week 5 Assignment: Modernize Your Web App with AI &amp; Advanced UI Techniques
+    </h1>
+  </header>
+  <main class="flex-1 flex flex-col items-center justify-center px-4">
+    <form id="search-form" autocomplete="off" class="flex flex-col md:flex-row gap-4 items-center w-full max-w-md mt-10">
+      <input
+        type="text"
+        id="city-input"
+        placeholder="Enter City"
+        aria-label="Enter City"
+        required
+        class="w-full md:w-auto px-4 py-2 rounded-md border border-gray-700 bg-gray-800 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+      />
+      <button
+        type="submit"
+        class="px-6 py-2 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-semibold transition"
+      >
+        Get My Weather
+      </button>
+    </form>
+    <section id="weather-output" class="w-full max-w-xl mt-8"></section>
+  </main>
+  <footer class="text-center mt-8 mb-4 text-gray-400">
+    Weather advice powered by OpenAI
+  </footer>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
