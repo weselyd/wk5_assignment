@@ -1,14 +1,17 @@
 import { owDirectGeocode, owGetCurrentWeather } from './modules/api.js';
-import { displayAiAdvice, showWeather, showError, showSpinner } from './modules/ui.js';
+import { displayAiAdvice, showWeather, showError, showSunSpinner, addButtonClickEffect } from './modules/ui.js';
 import { citySearch, aiButton } from './modules/events.js';
 import { callOpenAI } from './modules/ai.js';
+import { BackgroundColorSlider} from './modules/backgroundSlider.js';
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  
+  addButtonClickEffect('button[type="submit"]');
+  addButtonClickEffect('#ask-ai-btn');
+
   citySearch(async (city) => {
     if (!city) return;
-    showSpinner('weather-output'); // Show spinner while loading weather data
+    showSunSpinner('weather-output'); // Show rotating sun while loading weather data
     try {
       const location = await owDirectGeocode(city);  // Get city location data from OpenWeatherMap
       const weatherData = await owGetCurrentWeather(location.lat, location.lon);  // Use location data to get weather data
@@ -17,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
       aiButton(async (prompt) => {  // Set up AI button to fetch advice based on weather data
         if (!prompt) return;
         const adviceElem = displayAiAdvice();  // Create section for AI advice if it doesn't exist
-        showSpinner('ai-weather-advice');  // Show spinner while loading AI response
+        showSunSpinner('ai-weather-advice'); // Show rotating sun while loading AI response
 
         try {
           const aiReponse = await callOpenAI(prompt);  // Call OpenAI API with the prompt

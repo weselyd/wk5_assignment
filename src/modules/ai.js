@@ -1,7 +1,7 @@
 const OPENAI_KEY = ''; // Replace with your OpenAI API key
 
 
-// Call OpenAI API
+// Call OpenAI API to get AI response based on a prompt
 export async function callOpenAI(prompt) {
   const response = await fetch('https://api.openai.com/v1/responses', {
     method: 'POST',

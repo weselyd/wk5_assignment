@@ -1,5 +1,6 @@
 const API_KEY = ''; // Replace with your OpenWeatherMap API key
 
+// Call OpenWeatherMap API to get city coordinates
 export const owDirectGeocode = async (city) => {
   const response = await fetch(
     `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${API_KEY}`
@@ -10,6 +11,7 @@ export const owDirectGeocode = async (city) => {
   return data[0];  
 };
 
+// Call OpenWeatherMap API to get current weather data using coordinates
 export const owGetCurrentWeather = async (lat, lon) => {
   const response = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
