@@ -4,7 +4,8 @@ export class BackgroundColorSlider extends HTMLElement {
     this.attachShadow({ mode: 'open' });
   }
   connectedCallback() {
-    this.shadowRoot.innerHTML = `
+    // Create background slider component
+    this.shadowRoot.innerHTML = `  
       <style>
         .slider { width: 150px; accent-color: #38bdf8; }
         .label { margin-left: 1rem; font-weight: bold; color: #38bdf8; }
@@ -19,15 +20,12 @@ export class BackgroundColorSlider extends HTMLElement {
     this.label = this.shadowRoot.querySelector('#label');
     this.slider.addEventListener('input', () => this.changeBackground());
   }
+  // Configure slider color change info with labels
   changeBackground() {
     const val = this.slider.value;
     let color, label;
     if (val == 0) { color = "linear-gradient(to bottom right, #1e3a8a, #0ea5e9)"; label = "Blue Skies"; }
-    if (val == 1) { 
-      // Less bright sunny gradient
-      color = "linear-gradient(to bottom right, #fbbf24 60%, #f59e42 100%, #fde68a 0%)";
-      label = "Sunny";
-    }
+    if (val == 1) { color = "linear-gradient(to bottom right, #fbbf24 60%, #f59e42 100%, #fde68a 0%)"; label = "Sunny"; }
     if (val == 2) { color = "linear-gradient(to bottom right, #64748b, #334155)"; label = "Stormy"; }
     document.body.style.background = color;
     this.label.textContent = label;
